@@ -50,18 +50,19 @@ app.get("/:word/echo", (req, res) => {
   });
 });
 
-function getHandler(req, res) {
+function getNameHandler(req, res) {
   const { first: firstname, last: lastname } = req.query;
   res.json({
     name: `${firstname} ${lastname}`,
   });
 }
-function postHandler(req, res) {
+function postNameHandler(req, res) {
+  const { first: firstname, last: lastname } = req.body;
   res.json({
-    status: "success",
+    name: `${firstname} ${lastname}`,
   });
 }
 
-app.route("/name").get(getHandler).post(postHandler);
+app.route("/name").get(getNameHandler).post(postNameHandler);
 
 module.exports = app;
